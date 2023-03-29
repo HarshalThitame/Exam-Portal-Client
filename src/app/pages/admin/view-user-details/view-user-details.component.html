@@ -1,0 +1,130 @@
+<div class="overflow">
+    <mat-list class="bg-color">
+        <div class="h3 " mat-subheader>{{user.firstName}} {{user.lastName}} Report's</div>
+    </mat-list>
+</div>
+
+<div class="">
+    <div class="row">
+        <div class="col-md-4 user">
+
+            <div class="details text-center mt-5 sticky-top">
+                <img src="/assets/dp.jpg" alt="">
+                <h2 class="mt-4">{{user.firstName}} {{user.lastName}}</h2>
+                <div class="table-responsive">
+
+                    <table class="table text-center fs-6 fw-light ">
+
+                        <tbody>
+                            <tr>
+                                <td>Username : </td>
+                                <td>{{user.username}}</td>
+                            </tr>
+                            <tr>
+                                <td>User Id : </td>
+                                <td>USER {{user.id}}</td>
+                            </tr>
+                            <tr>
+                                <td>Phone : </td>
+                                <td>{{user.phone}}</td>
+                            </tr>
+                            <tr>
+                                <td>E-mail : </td>
+                                <td>{{user.email}}</td>
+                            </tr>
+                            <tr>
+                                <td>Status : </td>
+                                <td style="color: green;">{{user.enabled?"Active":"Not Active"}}</td>
+                            </tr>
+                            <tr>
+                                <td>Role : </td>
+                                <td>{{user.authorities[0].authority}}</td>
+                            </tr>
+                            <tr>
+                                <td>Joined Date : </td>
+                                <td>{{user.createdDate | date:'mediumDate'}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8 content">
+            <div class="m-4">
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <h2 class="mt-4">Quizzes Results</h2>
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <h1 class="m-2">{{userResult.length}} <br>
+                            <h3>Total Attempted</h3>
+                        </h1>
+                    </div>
+                </div>
+                <mat-divider></mat-divider>
+
+                <div class="scroll">
+                    <mat-card class="example-card m-3" *ngFor="let r of userResult">
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <mat-card-header>
+                                    <div mat-card-avatar class="example-header-image"></div>
+                                    <mat-card-title>{{r.quizs.title}}</mat-card-title>
+                                    <mat-card-subtitle>Category : {{r.quizs.category.title}}</mat-card-subtitle>
+                                </mat-card-header>
+                            </div>
+                            <div class="col-md-6 text-end">
+                                <!-- <a [routerLink]="'/admin/view-user-details/'+r.userR.id">
+                                <h3 class="m-2 fw-light"> Name : {{r.userR.firstName}} {{r.userR.lastName}} <br> Email :
+                                    {{r.userR.email}}</h3>
+                            </a> -->
+
+                            </div>
+
+                        </div>
+
+
+                        <mat-card-content>
+                            <!-- <p>
+                            {{r.quizs.description}}
+                        </p> -->
+
+                            <mat-divider></mat-divider>
+
+                            <h3 class="fw-light">Total Questions : {{r.quizs.numberOfQuestions}} <br> Total Marks :
+                                {{r.quizs.maxMarks}}</h3>
+
+                            <mat-divider></mat-divider>
+
+                            <h3>Attempted : {{r.attempted}}
+                                <mat-progress-bar title="{{r.attempted/r.quizs.numberOfQuestions*100 }}" mode="buffer"
+                                    value="{{r.attempted/r.quizs.numberOfQuestions*100}}"></mat-progress-bar>
+                            </h3>
+
+                            <h3>Correct Answer : {{r.correctAns}}
+                                <mat-progress-bar title="{{r.correctAns/r.quizs.numberOfQuestions*100 }}" mode="buffer"
+                                    color="accent"
+                                    value="{{r.correctAns/r.quizs.numberOfQuestions*100}}"></mat-progress-bar>
+                            </h3>
+
+                            <h3>Marks Obtained : {{r.marksGot}}
+                                <mat-progress-bar title="{{r.marksGot/r.quizs.maxMarks*100 }}" mode="buffer"
+                                    color="warn" value="{{r.marksGot/r.quizs.maxMarks*100}}"></mat-progress-bar>
+                            </h3>
+
+
+                        </mat-card-content>
+                        <mat-card-actions align="end">
+                            <button class="fw-light disabled" mat-button>Attempted Date : {{r.createdDate | date :
+                                'medium'}}
+                            </button>
+                        </mat-card-actions>
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+<mat-list>
+    <div class="h3" mat-subheader>Questions of {{title}}</div>
+</mat-list>
+<div class="container">
+    <div class="text-end">
+        <button [routerLink]="'/admin/add-question/'+qid+'/'+title" mat-raised-button color="primary">Add New
+            Question</button>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <mat-card *ngFor="let q of questions;let i = index" class="m-2">
+                <mat-card-content>
+                    <p>
+                        <b>Q.{{i+1}}</b> <span [innerHTML]="q.content"></span>
+                    </p>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p>1) {{q.option1}}</p>
+                                <p>2) {{q.option2}}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p>3) {{q.option3}}</p>
+                                <p>4 ) {{q.option4}}</p>
+                            </div>
+                        </div>
+                        <mat-divider></mat-divider>
+                        <p class="mt-1"><b>Correct Answer : </b>{{q.answer}}</p>
+                    </div>
+                </mat-card-content>
+                <mat-card-actions>
+                    <span class="example-spacer"></span>
+                    <button class="ml-2" (click)="deleteQuestion(q.quesid)" mat-mini-fab color="warn"
+                        aria-label="Example icon button with a delete icon">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                    <button class="ml-2" mat-mini-fab color="primary"
+                        aria-label="Example icon button with a delete icon">
+                        <mat-icon>post_add</mat-icon>
+                    </button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>

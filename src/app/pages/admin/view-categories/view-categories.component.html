@@ -1,0 +1,34 @@
+<mat-list class="sticky-top stk">
+    <div class="h3" mat-subheader>All Categories</div>
+</mat-list>
+
+<mat-divider></mat-divider>
+<div class="container mt-5">
+    <div class="text-end">
+        <!-- <button routerLink="/admin/add-category" class="btn btn-outline-light btn-primary">Add New Category</button> -->
+        <button (click)="addDialog()" class="btn btn-outline-light btn-primary">Add New Category</button>
+    </div>
+    <div class="row">
+        <div class="col-md-12 mx-auto m-2" *ngFor="let c of categories">
+            <mat-card class="p-4">
+                <mat-card-header>
+                    <mat-card-title>
+                        {{c.title}}
+                    </mat-card-title>
+                    <mat-card-subtitle>About Quiz...</mat-card-subtitle>
+                </mat-card-header>
+
+                <p class="truncate mt-4" title="{{c.description}}">{{c.description}}</p>
+
+
+                <div class="text-end">
+                    <button title="Update Category" [routerLink]="'/admin/update-category/'+c.cid" class="mr-2"
+                        mat-mini-fab color="primary"><mat-icon>add_task</mat-icon></button>
+
+                    <button title="Delete category" (click)="deleteCategory(c.cid)" class=" ml-2" mat-mini-fab
+                        color="warn"><mat-icon>delete</mat-icon></button>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+</div>

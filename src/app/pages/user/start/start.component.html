@@ -1,0 +1,243 @@
+<div class="bg">
+    <mat-card class="p-3" *ngIf="!isSubmit && !isQuizEmpty">
+        <mat-list>
+            <div class="h3" mat-subheader></div>
+        </mat-list>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-2">
+                    <!-- progress -->
+                    <div class="sticky">
+                        <mat-card>
+                            <mat-card-header>
+                                <mat-card-title>Progress</mat-card-title>
+                                <mat-card-subtitle><b>
+                                        Quiz will automatically submitted when timer reaches to
+                                        0:0</b></mat-card-subtitle>
+                            </mat-card-header>
+                            <mat-card-content>
+                                <h1 class="text-center">{{getFormattedTime()}}</h1>
+                                <mat-spinner mode="determinate" [value]="(timer/(this.questions.length *2*60))*100"
+                                    style="margin: auto;"></mat-spinner>
+                            </mat-card-content>
+                        </mat-card>
+                    </div>
+                    <div class="mobile-instruction">
+                        <mat-card>
+                            <mat-card-header>
+                                <mat-card-title>Instructions</mat-card-title>
+                            </mat-card-header>
+                            <mat-card-content>
+                                <ul>
+                                    <li>Do not refresh th page otherwise you will get new questions in this quiz.</li>
+                                    <li>Do not switch the tab.</li>
+                                    <li>Do not minimize the window.</li>
+                                </ul>
+                            </mat-card-content>
+                        </mat-card>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <!-- questions -->
+                    <div class="sticky">
+                        <ng-container *ngIf="questions">
+                            <mat-card>
+                                <mat-card-header>
+                                    <h1>{{questions[0].quiz.title}}</h1>
+                                </mat-card-header>
+                                <mat-card-subtitle class="m-2">
+                                    {{questions[0].quiz.category.title}}
+                                </mat-card-subtitle>
+                            </mat-card>
+                        </ng-container>
+                    </div>
+
+                    <mat-card class="m-3 p-2" *ngFor="let q of questions;let i =index">
+                        <mat-card-content>
+                            <p>{{i+1}}&nbsp;&nbsp;
+                                <span [innerHTML]="q.content"></span>
+                            </p>
+                            <mat-divider></mat-divider>
+
+                            <div class="row mt-4">
+                                <div class="col-md-6">
+                                    <input type="radio" [value]="q.option1" [name]="'q'+i" [(ngModel)]="q.givenAnswer">
+                                    {{q.option1}}
+                                    <!-- <mat-radio-button color="primary" [value]="q.option1" [name]="'q'+i"
+                                        [(ngModel)]="q.givenAnswer">{{q.option1}}
+                                    </mat-radio-button> -->
+
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="radio" [value]="q.option2" [name]="'q'+i" [(ngModel)]="q.givenAnswer">
+                                    {{q.option2}}
+                                    <!-- <mat-radio-button color="primary" [value]="q.option2" [name]="'q'+i"
+                                        [(ngModel)]="q.givenAnswer">{{q.option2}}
+                                    </mat-radio-button> -->
+                                </div>
+                            </div>
+                            <div class="row mt-4">
+                                <div class="col-md-6">
+                                    <input type="radio" [value]="q.option3" [name]="'q'+i" [(ngModel)]="q.givenAnswer">
+                                    {{q.option3}}
+                                    <!-- <mat-radio-button color="primary" [value]="q.option3" [name]="'q'+i"
+                                        [(ngModel)]="q.givenAnswer">{{q.option3}}
+                                    </mat-radio-button> -->
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="radio" [value]="q.option4" [name]="'q'+i" [(ngModel)]="q.givenAnswer">
+                                    {{q.option4}}
+                                    <!-- <mat-radio-button color="primary" [value]="q.option4" [name]="'q'+i"
+                                        [(ngModel)]="q.givenAnswer">{{q.option4}}
+                                    </mat-radio-button> -->
+                                </div>
+                            </div>
+                        </mat-card-content>
+                    </mat-card>
+                    <div class="container text-center ">
+                        <button (click)="submitQuiz()" mat-raised-button color="primary">Submit Quiz</button>
+                    </div>
+                </div>
+                <div class="col md-2">
+                    <!-- instructions -->
+                    <div class="pc-instruction sticky">
+                        <mat-card>
+                            <mat-card-header>
+                                <mat-card-title>Instructions</mat-card-title>
+                            </mat-card-header>
+                            <mat-card-content>
+                                <ul>
+                                    <li>Do not refresh th page otherwise you will get new questions in this quiz.</li>
+                                    <li>Do not switch the tab.</li>
+                                    <li>Do not minimize the window.</li>
+                                </ul>
+                            </mat-card-content>
+                        </mat-card>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </mat-card>
+
+    <mat-card class="p-3" *ngIf="isSubmit" style="background-color: rgb(240, 240, 255);" id="">
+        <div class="sticky text-end">
+            <button [routerLink]="'/user-dashboard/0'" class="btn btn-outline-success">Go Home</button>
+            <button class="btn btn-outline-primary ml-4" (click)="convetToPDF()">Download PDF</button>
+            <button class="btn btn-outline-primary ml-4" (click)="sendMail()">SendMail</button>
+        </div>
+        <div id="contentToConvert" class="data">
+            <mat-card class="mt-5 m-5">
+                <div class="container m-4">
+                    <h3><b>Name :</b> {{user.firstName}} {{user.lastName}} <br> <b>Phone :</b>
+                        {{user.phone}}
+                        <br><b>Email
+                            :</b>
+                        {{user.email}}
+                    </h3>
+                </div>
+            </mat-card>
+            <mat-list>
+                <div class="h3 text-center" mat-subheader>Result</div>
+            </mat-list>
+            <div class="container">
+                <mat-card>
+                    <mat-card-content>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <mat-card-header>
+                                    <div mat-card-avatar class="example-header-image"></div>
+                                    <mat-card-title>{{result.quizs.title}}</mat-card-title>
+                                    <mat-card-subtitle>Category : {{result.quizs.category.title}}</mat-card-subtitle>
+                                </mat-card-header>
+                            </div>
+                        </div>
+                        <mat-card-content>
+                            <p>
+                                {{result.quizs.description}}
+                            </p>
+
+                            <mat-divider></mat-divider>
+
+                            <h3 class="fw-light">Total Questions : {{result.quizs.numberOfQuestions}} <br> Total
+                                Marks :
+                                {{result.quizs.maxMarks}}</h3>
+
+                            <mat-divider></mat-divider>
+
+                            <h3>Attempted : {{attempted}}
+                                <mat-progress-bar title="{{attempted/result.quizs.numberOfQuestions*100 }}"
+                                    mode="determinate"
+                                    value="{{attempted/result.quizs.numberOfQuestions*100}}"></mat-progress-bar>
+                            </h3>
+
+                            <h3>Correct Answer : {{correctAnswers}}
+                                <mat-progress-bar title="{{correctAnswers/result.quizs.numberOfQuestions*100 }}"
+                                    mode="determinate" color="accent"
+                                    value="{{correctAnswers/result.quizs.numberOfQuestions*100}}"></mat-progress-bar>
+                            </h3>
+
+                            <h3>Marks Obtained : {{marksGot}}
+                                <mat-progress-bar title="{{marksGot/result.quizs.maxMarks*100 }}" mode="determinate"
+                                    color="warn" value="{{marksGot/result.quizs.maxMarks*100}}"></mat-progress-bar>
+                            </h3>
+
+
+                        </mat-card-content>
+                        <mat-card-actions align="end">
+                            <button class="fw-light" mat-button>Attempted Date : {{result.createdDate | date :
+                                'medium'}}
+                            </button>
+                        </mat-card-actions>
+                    </mat-card-content>
+
+                </mat-card>
+
+            </div>
+
+            <div class="container">
+                <mat-list>
+                    <div class="h3" mat-subheader>Answers</div>
+                </mat-list>
+                <div class="row mb-5" id="resultTable">
+                    <div class="col-md-12">
+                        <mat-card *ngFor="let q of questions;let i = index" class="">
+                            <mat-card-content>
+                                <p>
+                                    <b>Q.{{i+1}}</b> <span [innerHTML]="q.content"></span>
+                                </p>
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <p>1) {{q.option1}}</p>
+                                            <p>2) {{q.option2}}</p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>3) {{q.option3}}</p>
+                                            <p>4) {{q.option4}}</p>
+                                        </div>
+                                    </div>
+                                    <mat-divider></mat-divider>
+                                    <p class="mt-1"><b>Correct Answer : </b>{{q.answer}} </p>
+
+                                    <p class="mt-1" [ngStyle]="{'color': q.answer==q.givenAnswer? 'green' : 'red'}">
+                                        <mat-icon *ngIf="q.answer!=q.givenAnswer">dangerous</mat-icon>&nbsp;&nbsp;
+                                        <mat-icon *ngIf="q.answer==q.givenAnswer">check_circle</mat-icon>&nbsp;&nbsp;
+                                        <b>Your Answer :
+                                        </b>{{q.givenAnswer}}
+                                        <span *ngIf="q.givenAnswer == null">(Not Attempted)</span>
+                                    </p>
+
+                                </div>
+                            </mat-card-content>
+                        </mat-card>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-card>
+</div>

@@ -1,0 +1,41 @@
+.example-header-image {
+  background-image: url(../../../../assets/quiz.png);
+  background-size: cover;
+}
+
+.example-icon {
+  padding: 0 14px;
+}
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+form {
+  background-color: white;
+  margin: 0;
+  padding: 0;
+}
+
+mat-form-field {
+  margin-bottom: -1.25em;
+}
+.full-width {
+  width: 60%;
+  margin-left: auto;
+}
+
+h1 {
+  font-family: "Noto Sans Adlam Unjoined", sans-serif;
+}
+.bg-color {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 9, 121, 1) 35%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  color: white;
+  margin: -16px;
+  padding: 15px;
+}

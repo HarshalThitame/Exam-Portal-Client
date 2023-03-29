@@ -1,0 +1,24 @@
+.example-card {
+  max-width: 400px;
+}
+
+.example-header-image {
+  background-image: url("/assets/quiz.png");
+  background-size: cover;
+}
+mat-form-field,
+form {
+  background-color: white;
+  margin: 0;
+  padding: 0;
+}
+
+.full-width {
+  width: 60%;
+}
+.disabledbutton {
+  cursor: auto;
+}
+.card-header {
+  color: #002b5c;
+}

@@ -1,0 +1,91 @@
+<!-- <div style="margin: 20px;">
+    <div class="row">
+        <div class="col-md-2">
+            <app-sidebar-user></app-sidebar-user>
+        </div>
+        <div class="col-md-10">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div> -->
+
+<mat-toolbar class="mat-elevation-z8">
+    <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+        <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+        <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+    </button>
+    Exam Portal
+    <span class="example-spacer"></span>
+    <button *ngIf="!isLoggedIn" routerLink="/" mat-button class="m-2">Login</button>
+    <button *ngIf="!isLoggedIn" routerLink="/" mat-button class="m-2">Register</button>
+    <button routerLink="/admin/profile" *ngIf="isLoggedIn" mat-button class="m-2">{{login.getUser().username}}</button>
+    <button (click)="logout()" *ngIf="isLoggedIn" mat-button class="m-2">Logout</button>
+
+</mat-toolbar>
+
+<mat-sidenav-container>
+    <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+        <img class="avatar mat-elevation-z8 m-2" src="../assets/dp.jpg" />
+
+        <h2 class="name">{{user.firstName}} {{user.lastName}}</h2>
+        <p class="designation" (click)="logout()" title="Logout"> <mat-icon>logout</mat-icon> </p>
+
+        <mat-divider></mat-divider>
+
+        <button mat-button class="menu-button" routerLink="/admin/">
+            <mat-icon>home</mat-icon>
+            <span>Home</span>
+        </button>
+
+        <button mat-button class="menu-button" routerLink="/admin/profile">
+            <mat-icon>person</mat-icon>
+            <span>Profile</span>
+        </button>
+
+
+        <mat-divider></mat-divider>
+
+        <button mat-button class="menu-button" routerLink="/admin/categories">
+            <mat-icon>category</mat-icon>
+            <span>Categories</span>
+        </button>
+
+
+        <button mat-button class="menu-button" routerLink="/admin/add-category">
+            <mat-icon>create_new_folder</mat-icon>
+            <span>Add Category</span>
+        </button>
+
+        <button mat-button class="menu-button" routerLink="/admin/quizzes">
+            <mat-icon>quiz</mat-icon>
+            <span>Quizzes</span>
+        </button>
+
+        <button mat-button class="menu-button" routerLink="/admin/add-quiz">
+            <mat-icon>post_add</mat-icon>
+            <span>Add Quiz</span>
+        </button>
+
+
+        <mat-divider></mat-divider>
+
+        <button mat-button class="menu-button" routerLink="/help">
+            <mat-icon>help</mat-icon>
+            <span>Help</span>
+        </button>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div class="content mat-elevation-z8">
+            <!-- <router-outlet></router-outlet> --><ngx-ui-loader fgsColor="#0091EA" pbColor="#0091EA" [fgsSize]="125"
+                text="Please wait..." textColor="white" fgsType="square-jelly-box">
+
+            </ngx-ui-loader>
+            <div ngxUiLoaderBlurred [blur]="10">
+                <!-- <app-navbar></app-navbar> -->
+                <router-outlet></router-outlet>
+                <!-- This page content will be blurred/frosted when foreground loader is showed -->
+            </div>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
+<!-- Footer -->

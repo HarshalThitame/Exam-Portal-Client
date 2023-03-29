@@ -1,0 +1,67 @@
+<div class="h3 sticky-top stk" mat-subheader>
+    <div class="row">
+        <div class="col-md-6">Ranking</div>
+    </div>
+    <button mat-button [matMenuTriggerFor]="rank"> SORT <mat-icon>sort</mat-icon></button>
+    <h2 class="card-title m-0">{{quizTitle}}</h2>
+    <h4 class="card-subtitle text-muted"> Category : {{categoryTitle}}</h4>
+
+</div>
+<mat-menu #rank="matMenu">
+    <button mat-menu-item *ngFor="let q of quiz" (click)="loadQuizRanking(q.qid)">{{q.title}}</button>
+</mat-menu>
+
+<div class="example-container mat-elevation-z8">
+    <div class="col">
+
+        <!-- records -->
+    </div>
+    <mat-table #table [dataSource]="dataSource">
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="rank">
+            <mat-header-cell *matHeaderCellDef> Rank </mat-header-cell>
+            <mat-cell *matCellDef="let element;let i = index;">{{i+1}}
+                <!-- <img *ngIf="i == 0" src="../../../assets/rank1.png" style="width: 40px;" alt="">
+                <img *ngIf="i == 1" src="../../../assets/rank2.png" style="width: 40px;" alt="">
+                <img *ngIf="i == 2" src="../../../assets/rank3.png" style="width: 40px;" alt=""> -->
+                <!-- <span *ngIf="i != 0 && i != 1 && i !=2">{{i+1}}</span>
+                 -->
+            </mat-cell>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="username">
+            <mat-header-cell *matHeaderCellDef> Username </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.userR.username}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.userR.firstName}} {{element.userR.lastName}} </mat-cell>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="email">
+            <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.userR.email}} </mat-cell>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="phone">
+            <mat-header-cell *matHeaderCellDef> Phone </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.userR.phone}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="percentage">
+            <mat-header-cell *matHeaderCellDef> Obtained Mark </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.marksGot}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+    <mat-paginator #paginator [pageSize]="displayRecordCount" [pageSizeOptions]="[5, 10, 15]">
+    </mat-paginator>
+</div>

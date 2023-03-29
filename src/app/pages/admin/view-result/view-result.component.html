@@ -1,0 +1,107 @@
+<div class="h3 sticky-top stk" mat-subheader>
+    <div class="row">
+        <div class="col-md-6">Results</div>
+        <div class="col-md-6 text-end">
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Search</mat-label>
+                <input (keyup)="onKeySearch($event)" [(ngModel)]="searchTitle" autofocus type="text" name="title"
+                    matInput placeholder="Search by user's name or quiz title....">
+
+            </mat-form-field>
+            <!-- {{searchTitle | json}} -->
+        </div>
+    </div>
+    <button mat-button [matMenuTriggerFor]="sorting"> SORT <mat-icon>sort</mat-icon></button>
+</div>
+
+<mat-menu #sorting="matMenu">
+    <button mat-menu-item (click)="loadAll()">All</button>
+    <button mat-menu-item [matMenuTriggerFor]="cat">Categories</button>
+    <button mat-menu-item [matMenuTriggerFor]="quizzes">Quiz</button>
+    <button mat-menu-item [matMenuTriggerFor]="rank">Ranking</button>
+</mat-menu>
+
+<mat-menu #cat="matMenu">
+    <button mat-menu-item *ngFor="let c of categories" (click)="loadResultByCategory(c.title)">{{c.title}}</button>
+</mat-menu>
+<mat-menu #quizzes="matMenu">
+    <button mat-menu-item *ngFor="let q of quiz" (click)="loadResultByQuiz(q.title)">{{q.title}}</button>
+</mat-menu>
+<mat-menu #rank="matMenu">
+    <button mat-menu-item *ngFor="let q of quiz" (click)="rankingByQuiz(q.qid)">{{q.title}}</button>
+</mat-menu>
+
+
+
+<mat-divider></mat-divider>
+
+<mat-paginator #paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="[3,6,10,50]"
+    (page)="pageEvent = $event">
+</mat-paginator>
+<div class="container" *ngIf="!isRanking">
+    <div class="row">
+        <div class="col-md-12">
+
+            <mat-card class="example-card m-3" *ngFor="let r of obs | async">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <mat-card-header>
+                            <div mat-card-avatar class="example-header-image"></div>
+                            <mat-card-title>{{r.quizs.title}}</mat-card-title>
+                            <mat-card-subtitle>Category : {{r.quizs.category.title}}</mat-card-subtitle>
+                        </mat-card-header>
+                    </div>
+                    <div class="col-md-6 text-end">
+                        <a [routerLink]="'/admin/view-user-details/'+r.userR.id">
+                            <h3 class="m-2 fw-light"> Name : {{r.userR.firstName}} {{r.userR.lastName}} <br> Email :
+                                {{r.userR.email}}</h3>
+                        </a>
+                    </div>
+                </div>
+
+
+                <mat-card-content>
+                    <div class="mobile-view">
+                        <p>
+                            {{r.quizs.description}}
+                        </p>
+                    </div>
+
+                    <mat-divider></mat-divider>
+
+                    <h3 class="fw-light">Total Questions : {{r.quizs.numberOfQuestions}} <br> Total Marks :
+                        {{r.quizs.maxMarks}}</h3>
+
+                    <mat-divider></mat-divider>
+
+                    <h3>Attempted : {{r.attempted}}
+                        <mat-progress-bar title="{{r.attempted/r.quizs.numberOfQuestions*100 }}" mode="buffer"
+                            value="{{r.attempted/r.quizs.numberOfQuestions*100}}"></mat-progress-bar>
+                    </h3>
+
+                    <h3>Correct Answer : {{r.correctAns}}
+                        <mat-progress-bar title="{{r.correctAns/r.quizs.numberOfQuestions*100 }}" mode="buffer"
+                            color="accent" value="{{r.correctAns/r.quizs.numberOfQuestions*100}}"></mat-progress-bar>
+                    </h3>
+
+                    <h3>Marks Obtained : {{r.marksGot}}
+                        <mat-progress-bar title="{{r.marksGot/r.quizs.maxMarks*100 }}" mode="buffer" color="warn"
+                            value="{{r.marksGot/r.quizs.maxMarks*100}}"></mat-progress-bar>
+                    </h3>
+
+
+                </mat-card-content>
+                <mat-card-actions align="end">
+                    <button class="fw-light disabled" mat-button>Attempted Date : {{r.createdDate | date : 'medium'}}
+                    </button>
+                </mat-card-actions>
+            </mat-card>
+
+        </div>
+    </div>
+</div>
+
+<div class="conatainer">
+    <h2 class="fw-light" *ngIf="!isFound">No record found .....!</h2>
+</div>

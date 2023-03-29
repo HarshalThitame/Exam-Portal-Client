@@ -1,0 +1,7 @@
+.full-width {
+  width: 100%;
+}
+
+:host ::ng-deep .ck-editor__editable {
+  min-height: 200px !important;
+}

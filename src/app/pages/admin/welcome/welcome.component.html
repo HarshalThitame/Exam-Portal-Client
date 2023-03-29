@@ -1,0 +1,84 @@
+<mat-list>
+    <div class="h3" mat-subheader>Dashboard</div>
+</mat-list>
+<mat-divider></mat-divider>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6">
+            <a href="" routerLink="/admin/view-users">
+                <div class="card students m-4">
+                    <div class="card-body">
+                        <div class="row m-1">
+                            <div class="col-md-3">
+                                <img src="../../../../assets/users.png" class="responsive" alt="">
+                            </div>
+                            <div class="col-md-9">
+                                <h2 class="card-title m-0">Total Students</h2>
+                                <h1 class="card-subtitle mb-2 ">{{user.length}}
+                                </h1>
+                            </div>
+                        </div>
+                        <h1 class="mt-4 ml-4 text-uppercase font-monospace">Students List</h1>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-6">
+            <a href="" routerLink="/admin/quizzes">
+                <div class="card exams m-4">
+                    <div class="card-body">
+                        <div class="row m-1">
+                            <div class="col-md-3">
+                                <img src="../../../../assets/exams.png" class="responsive" alt="">
+                            </div>
+                            <div class="col-md-9">
+                                <h2 class="card-title m-0">Total Quizzes</h2>
+                                <h1 class="card-subtitle mb-2 ">{{quizzes.length}}
+                                </h1>
+                            </div>
+                        </div>
+                        <h1 class="mt-4 ml-4 text-uppercase font-monospace">Quizzes List</h1>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-6">
+            <a href="" routerLink="/admin/categories">
+                <div class="card categories m-4">
+                    <div class="card-body">
+                        <div class="row m-1">
+                            <div class="col-md-3">
+                                <img src="../../../../assets/category.png" class="responsive" alt="">
+                            </div>
+                            <div class="col-md-9">
+                                <h2 class="card-title m-0">Total Categories</h2>
+                                <h1 class="card-subtitle mb-2 ">{{categories.length}}
+                                </h1>
+                            </div>
+                        </div>
+                        <h1 class="mt-4 ml-4 text-uppercase font-monospace">Categories List</h1>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-6">
+            <a href="" routerLink="/admin/view-result">
+                <div class="card result m-4">
+                    <div class="card-body">
+                        <div class="row m-1">
+                            <div class="col-md-3">
+                                <img src="../../../../assets/Result.png" class="responsive" alt="">
+                            </div>
+                            <div class="col-md-9">
+                                <h2 class="card-title m-0">Result</h2>
+                                <h1 class="card-subtitle mb-2 text-white">{{userResult.length}}
+                                </h1>
+                            </div>
+                        </div>
+                        <h1 class="mt-4 ml-4 text-uppercase font-monospace">Students Result</h1>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+<mat-list>
+    <div class="h3" mat-subheader>Update Category</div>
+</mat-list>
+<!-- {{category |json}} -->
+<mat-card-content>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <form (ngSubmit)="formSubmit()">
+                    <mat-form-field class="full-width" appearance="fill">
+                        <mat-label>Title</mat-label>
+                        <input required autofocus type="text" name="title" matInput placeholder="Enter Category Title"
+                            [(ngModel)]="category.title">
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width" appearance="fill">
+                        <mat-label>Description</mat-label>
+                        <textarea name="description" rows="10" matInput placeholder="Enter description"
+                            [(ngModel)]="category.description"></textarea>
+                    </mat-form-field>
+                    <div class="text-center">
+                        <button type="submit" mat-raised-button color="primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</mat-card-content>

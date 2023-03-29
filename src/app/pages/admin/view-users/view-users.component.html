@@ -1,0 +1,38 @@
+<mat-list class="sticky-top stk">
+    <div class="h3" mat-subheader>Students</div>
+</mat-list>
+
+<mat-divider></mat-divider>
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table class="table fs-5">
+                    <thead class=" table-primary">
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Username</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Phone</th>
+                                <th scope="col">Is Active?</th>
+                            </tr>
+                    </thead>
+                    <tbody>
+                        <!-- [routerLink]="'/admin/view-user-details/'+u.id" -->
+                        <tr *ngFor="let u of user;let i = index">
+                            <th height="50" scope="row">{{i+1}}</th>
+                            <td [routerLink]="'/admin/view-user-details/'+u.id">{{u.firstName}} {{u.lastName}}</td>
+                            <td [routerLink]="'/admin/view-user-details/'+u.id">{{u.username}}</td>
+                            <td [routerLink]="'/admin/view-user-details/'+u.id">{{u.email}}</td>
+                            <td [routerLink]="'/admin/view-user-details/'+u.id">{{u.phone}}</td>
+                            <td>
+                                <mat-slide-toggle [(ngModel)]="u.enabled" (change)="check(u.id)"></mat-slide-toggle>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

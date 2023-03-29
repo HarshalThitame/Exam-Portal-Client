@@ -1,0 +1,16 @@
+body,
+table {
+  font-family: "Lobster", cursive;
+  font-family: "Orbitron", sans-serif;
+}
+
+.profile-image {
+  max-width: 150px;
+  max-height: 200px;
+  border: 2px solid black;
+  border-radius: 50%;
+}
+tr,
+td {
+  padding: 14px;
+}

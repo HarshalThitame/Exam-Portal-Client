@@ -1,0 +1,49 @@
+<mat-list>
+    <div class="h3" mat-subheader>Send us your feedback!</div>
+</mat-list>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <form class="example-form" (ngSubmit)="sendFeedback()">
+
+                <!-- email field -->
+                <!-- <mat-form-field class="full-width" [appearance]="'outline'">
+                    <mat-label>Email</mat-label>
+                    <input type="email" matInput [formControl]="emailFormControl" [(ngModel)]="feedback.to"
+                        placeholder="Ex. examportal@example.com">
+                    <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                        Please enter a valid email address
+                    </mat-error>
+                    <mat-error *ngIf="emailFormControl.hasError('required')">
+                        Email is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field> -->
+
+                <!-- subject field -->
+
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Topic</mat-label>
+                    <input required autofocus type="text" name="subject" matInput placeholder="Enter topic"
+                        [(ngModel)]="feedback.subject">
+                </mat-form-field>
+
+                <!-- Massege field -->
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Message</mat-label>
+                    <textarea name="message" matInput placeholder="Enter Message" rows="5"
+                        [(ngModel)]="feedback.message"></textarea>
+                </mat-form-field>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-outline-success btn-lg btn-block">Send</button>
+                </div>
+
+
+
+            </form>
+            <!-- {{feedback|json}} -->
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,51 @@
+<div class="h3" mat-subheader>Your Profile Details</div>
+<mat-card-content>
+    <!-- {{user | json}} -->
+    <div class="container">
+        <div class="container text-center">
+            <img src="../../../assets/dp.jpg" class="profile-image" alt="">
+
+            <h1 class="mt-4">{{user.firstName}} {{user.lastName}}</h1>
+        </div>
+        <hr style="color: blue;">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="table-responsive">
+                    <table class="table text-center fs-5 fw-light table-light">
+
+                        <tbody>
+                            <tr>
+                                <td>Username</td>
+                                <td>{{user.username}}</td>
+                            </tr>
+                            <tr>
+                                <td>User Id</td>
+                                <td>USER {{user.id}}</td>
+                            </tr>
+                            <tr>
+                                <td>Phone</td>
+                                <td>{{user.phone}}</td>
+                            </tr>
+                            <tr>
+                                <td>E-mail</td>
+                                <td>{{user.email}}</td>
+                            </tr>
+                            <tr>
+                                <td>Status</td>
+                                <td style="color: green;">{{user.enabled?"Active":"Not Active"}}</td>
+                            </tr>
+                            <tr>
+                                <td>Role</td>
+                                <td>{{user.authorities[0].authority}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <mat-card-actions class="text-center">
+        <button routerLink="/user-dashboard/update/profile" mat-raised-button color="primary">Update</button>
+        <!-- <button mat-raised-button></button> -->
+    </mat-card-actions>
+</mat-card-content>

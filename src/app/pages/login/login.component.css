@@ -1,0 +1,28 @@
+.full-width {
+  width: 100%;
+}
+.card {
+  /* height: 500px;
+  width: 600px; */
+  padding: 0;
+  margin: 0;
+  border-radius: 10px;
+}
+.card-header {
+  background: rgb(217, 217, 217);
+  background: linear-gradient(
+    90deg,
+    rgba(217, 217, 217, 1) 0%,
+    rgba(235, 235, 255, 1) 20%,
+    rgba(245, 245, 255, 1) 100%
+  );
+}
+a {
+  /* font-size: 20px; */
+  text-decoration: none;
+  color: blue;
+  cursor: pointer;
+}
+.container {
+  overflow-y: scroll;
+}

@@ -1,0 +1,56 @@
+<div class="">
+    <div class="h3 m-0" mat-subheader>
+        <div class="row">
+            <div class="col-md-6">All Quizzes</div>
+            <div class="col-md-6 text-end">
+                <mat-form-field class="full-width" appearance="fill">
+                    <mat-label>Search</mat-label>
+                    <input (keyup)="onKeySearch($event)" [(ngModel)]="searchTitle" autofocus type="text" name="title"
+                        matInput placeholder="Enter quiz title to search quiz...">
+
+                </mat-form-field>
+                <!-- {{searchTitle | json}} -->
+            </div>
+        </div>
+    </div>
+</div>
+<mat-divider></mat-divider>
+<div class="container mt-2">
+    <div class="row" *ngIf="quizzes">
+        <mat-paginator #paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="[3,6,10,50]"
+            (page)="pageEvent = $event">
+        </mat-paginator>
+        <div class="col-md-4" *ngFor="let q of obs |async">
+            <div class=" card m-2">
+                <div class="card-header" [title]="q.title">
+                    <h2 class="card-title m-0 truncate">{{q.title}}</h2>
+                    <h4 class="card-subtitle mb-2 text-muted">{{q.category.title}}</h4>
+                </div>
+                <div class="cord-body mt-4 p-2">
+
+                    <mat-card-content class="mt-2" [title]="q.description">
+                        <p class="truncate">{{q.description}}</p>
+                    </mat-card-content>
+                    <div>
+                        <button [routerLink]="'/user-dashboard/instructions/'+q.qid" mat-button
+                            color="primary">View</button>
+                        <button [routerLink]="'/user-dashboard/instructions/'+q.qid" mat-button
+                            color="accent">Start</button>
+                        <button class="disabledbutton" mat-button>Questions : {{q.numberOfQuestions}}</button>
+                        <button class="disabledbutton" mat-button>Marks : {{q.maxMarks}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="col-md-12" *ngIf="quizzes.length==0">
+            <mat-card>
+                <mat-card-content>
+                    <h1>No data in this category</h1>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>

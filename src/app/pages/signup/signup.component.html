@@ -1,0 +1,91 @@
+<!-- <app-navbar></app-navbar> -->
+<div class="bootstrap-wrapper">
+
+    <div class="container text-center">
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <h1 class="text-center">Register </h1>
+                    </div>
+                    <div class="card-body">
+                        <form (ngSubmit)="formSubmit()" class="mt-5">
+
+                            <!-- username field -->
+                            <p>
+                                <mat-form-field class="full-width" appearance="outline">
+                                    <mat-label>Username</mat-label>
+                                    <input required [(ngModel)]="user.username" name="username" matInput
+                                        placeholder="Enter username">
+                                    <mat-icon matSuffix>mode_edit</mat-icon>
+                                    <mat-hint>Username must be unique !!</mat-hint>
+                                </mat-form-field>
+                            </p>
+
+
+                            <!-- password field -->
+                            <p>
+                                <mat-form-field class="full-width" appearance="outline">
+                                    <mat-label>Password</mat-label>
+                                    <input required [(ngModel)]="user.password" name="password"
+                                        [type]="hide ? 'password' : 'text'" matInput placeholder="Enter password">
+                                    <button mat-icon-button matSuffix (click)="hide = !hide"
+                                        [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                    </button>
+
+                                </mat-form-field>
+                            </p>
+
+                            <!-- first name field -->
+                            <p>
+                                <mat-form-field class="full-width" appearance="outline">
+                                    <mat-label>First Name</mat-label>
+                                    <input required [(ngModel)]="user.firstName" name="firstName" matInput
+                                        placeholder="Enter first name">
+                                    <mat-icon matSuffix>mode_edit</mat-icon>
+                                </mat-form-field>
+                            </p>
+
+                            <!-- last name field -->
+                            <p>
+                                <mat-form-field class="full-width" appearance="outline">
+                                    <mat-label>Last Name</mat-label>
+                                    <input required [(ngModel)]="user.lastName" name="lastName" matInput
+                                        placeholder="Enter last name">
+                                    <mat-icon matSuffix>mode_edit</mat-icon>
+                                </mat-form-field>
+                            </p>
+
+                            <!-- email field -->
+                            <p>
+                                <mat-form-field class="full-width" appearance="outline">
+                                    <mat-label>Email</mat-label>
+                                    <input required [(ngModel)]="user.email" name="email" matInput
+                                        placeholder="Enter email">
+                                    <mat-icon matSuffix>mode_edit</mat-icon>
+                                </mat-form-field>
+                            </p>
+
+                            <!-- phone field -->
+                            <p>
+                                <mat-form-field class="full-width" appearance="outline">
+                                    <mat-label>Phone</mat-label>
+                                    <input required [(ngModel)]="user.phone" name="phone" matInput
+                                        placeholder="Enter phone">
+                                    <mat-icon matSuffix>mode_edit</mat-icon>
+                                </mat-form-field>
+                            </p>
+
+                            <!-- buttons -->
+                            <div class="d-grid gap-2 col-6 mx-auto">
+                                <button class="btn btn-outline-success btn-lg" type="submit">Register</button>
+                            </div> <br><br>
+                            <a (click)="openLogin()">Already have an account....!</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
