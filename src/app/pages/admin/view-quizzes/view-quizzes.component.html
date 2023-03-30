@@ -3,10 +3,14 @@
         <div class="row">
             <div class="col-md-6">All Quizzes</div>
             <div class="col-md-6 text-end">
-                <mat-form-field class="full-width no-wrapper" appearance="outline">
+                <mat-form-field class="full-width no-wrapper"
+                    appearance="outline">
                     <mat-label>Search</mat-label>
-                    <input (keyup)="onKeySearch($event)" [(ngModel)]="searchTitle" autofocus type="text" name="title"
-                        matInput placeholder="Enter quiz title to search quiz...">
+                    <input (keyup)="onKeySearch($event)"
+                        [(ngModel)]="searchTitle" autofocus type="text"
+                        name="title"
+                        matInput placeholder="Enter quiz title to search
+                        quiz...">
 
                 </mat-form-field>
                 <!-- {{searchTitle | json}} -->
@@ -17,10 +21,11 @@
 </mat-list>
 <div class="container">
     <div class="text-end">
-        <button routerLink="/admin/add-quiz" class="btn btn-outline-light btn-primary">Add New Quiz</button>
+        <button routerLink="/admin/add-quiz" class="btn btn-outline-light
+            btn-primary">Add New Quiz</button>
     </div>
     <div class="row">
-        <div class="col-md-12 m-2" *ngFor="let quiz of quizzes;let i = index">
+        <div class="col-md-12 m-2" *ngFor="let quiz of quizzes;let i= index">
             <mat-card class="p-2">
                 <mat-card-header>
                     <div mat-card-avatar class="example-header-image"></div>
@@ -34,23 +39,31 @@
                 </mat-card-content>
                 <mat-card-actions>
                     <div class="container">
-                        <button [routerLink]="'/admin/view-questions/'+quiz.qid+'/'+quiz.title" class="m-2"
-                            mat-flat-button color="primary">Questions</button>
-                        <button class="m-2" mat-stroked-button color="primary">Max Marks :
+                        <button
+                            [routerLink]="'/admin/view-questions/'+quiz.qid+'/'+quiz.title"
+                            class="show-mobile m-2" 
+                            mat-flat-button color="primary">Questions :
+                            {{totalQuetions[i]}}</button>
+                        <button class="show-mobile m-2" mat-stroked-button color="primary">Max
+                            Marks :
                             {{quiz.maxMarks}}</button>
-                        <button class="m-2" mat-stroked-button color="primary">Questions :
+                        <button class="show-mobile m-2" mat-stroked-button color="primary">Min.
+                            eq. Que. :
                             {{quiz.numberOfQuestions}}</button>
-                        <button [routerLink]="'/admin/quiz/'+quiz.qid" class="m-2" mat-raised-button
+                        <button [routerLink]="'/admin/quiz/'+quiz.qid"
+                            class="show-mobile m-2" mat-raised-button
                             color="primary">Update</button>
-                        <button class="m-2" mat-raised-button color="primary">Attempts : {{totalAttempts[i]}}
+                        <button class="show-mobile m-2" mat-raised-button color="primary">Attempts
+                            : {{totalAttempts[i]}}
 
                         </button>
-                        <button (click)="deletQuiz(quiz.qid)" class="m-2" mat-raised-button color="warn">Delete</button>
+                        <button (click)="deletQuiz(quiz.qid)" class="m-2"
+                            mat-raised-button color="warn">Delete</button>
                         <span class="example-spacer"></span>
                         <mat-label>Publish &nbsp;</mat-label>
-                        <mat-slide-toggle name="active" [(ngModel)]="quiz.active" class="example-margin"
+                        <mat-slide-toggle name="active"
+                            [(ngModel)]="quiz.active" class="example-margin"
                             (change)="check(quiz.qid)" color="primary">
-
                         </mat-slide-toggle>
                     </div>
                 </mat-card-actions>

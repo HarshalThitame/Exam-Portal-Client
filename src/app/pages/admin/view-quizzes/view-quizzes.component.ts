@@ -15,6 +15,7 @@ import Swal from 'sweetalert2';
 export class ViewQuizzesComponent implements OnInit {
   quizzes: any;
   totalAttempts: any = [];
+  totalQuetions:any=[];
 
   quiz: any;
   questions: any;
@@ -38,6 +39,16 @@ export class ViewQuizzesComponent implements OnInit {
         this.quizzes = data;
         console.log(data);
         this.quizzes.forEach((q: any) => {
+
+          this._que.getQuestionsOfQuiz(q.qid).subscribe(
+            (data:any)=>{
+              console.log("Total ques ",data.length);
+              this.totalQuetions.push(data.length);
+            },
+            (error)=>{
+              Swal.fire('Error !!', 'Server Error', 'error')
+            }
+          )
           // this.totalAttempts.push(q);
           this._result.getResultByQuiz(q.title).subscribe(
             (data: any) => {
@@ -114,7 +125,7 @@ export class ViewQuizzesComponent implements OnInit {
     });
   }
 
-  check(qid: any) {
+  public check(qid: any) {
     this.sizeOfquestion = 0;
     this.noOfquestion = 0;
 

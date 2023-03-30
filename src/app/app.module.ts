@@ -18,7 +18,7 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { LoginComponent } from './pages/login/login.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HttpClientModule } from '@angular/common/http';
@@ -155,7 +155,6 @@ import { HelpcenterComponent } from './pages/helpcenter/helpcenter.component';
     NgxUiLoaderModule,
     MatProgressBarModule,
     MatDialogModule,
-    
 
     MatMenuModule,
     FormsModule,
