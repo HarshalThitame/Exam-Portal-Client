@@ -1,6 +1,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
+
+
 <app-navbar></app-navbar>
 <div class="content" style="height: 100%;">
     <!-- <img src="../../../assets/1.png" alt=""> -->
@@ -238,7 +241,7 @@
             </div> -->
             <div class="">
                 <!-- <img src="../../../assets/quiz1.png" style="width: 100%;" class="quizimg" alt=""> -->
-                <div class='reflection-container'>
+                <!-- <div class='reflection-container'>
                     <a class='reflection-grid-cell reflection-grid-cell-1'
                         href='#'></a>
                     <a class='reflection-grid-cell reflection-grid-cell-2'
@@ -440,7 +443,19 @@
                     <a class='reflection-grid-cell reflection-grid-cell-100'
                         href='#'></a>
                     <div class='reflection-content'></div>
-                </div>
+                </div> -->
+
+                <swiper-container [options]="swipeOptions" [pager]="false" #homeSlide>
+                    <swiper-slide>
+                      <img src="https://source.unsplash.com/random/512x512">
+                    </swiper-slide>
+                    <swiper-slide>
+                      <img src="https://source.unsplash.com/random/512x512?nature">
+                    </swiper-slide>
+                    <swiper-slide>
+                      <img src="https://source.unsplash.com/random/512x512?portrait">
+                    </swiper-slide>
+                  </swiper-container>
 
             </div>
             <div class="container text-center ml-4 m-5">

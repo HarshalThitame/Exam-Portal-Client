@@ -78,12 +78,15 @@ import { RankingComponent } from './pages/ranking/ranking.component';
 import { HelpcenterComponent } from './pages/helpcenter/helpcenter.component';
 import { ProgressBarColor } from './pages/user/quiz-attempts/progress-bar-color';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { SwiperComponent ,SwiperSlide } from './pages/swiper/swiper.component';
+
 
 
 // import PeopleOutlineIcon from '@mui/icons-material/PeopleOutline';
 
 @NgModule({
   declarations: [
+    SwiperSlide,
     AppComponent,
     NavbarComponent,
     FooterComponent,
@@ -123,7 +126,8 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
     ResetPasswordComponent,
     RankingComponent,
     HelpcenterComponent,
-    ProgressBarColor
+    ProgressBarColor,
+    SwiperComponent
   ],
   imports: [
     MatButtonToggleModule,
