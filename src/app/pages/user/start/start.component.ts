@@ -239,6 +239,22 @@ export class StartComponent implements OnInit {
     );
   }
 
+  exitQuiz(){
+    Swal.fire({
+      title: 'Do you want to exit the quiz ?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#e53935',
+      cancelButtonColor: 'black',
+      confirmButtonText: 'Exit Quiz',
+    }).then((e: any) => {
+      if (e.isConfirmed) {
+        this._router.navigate(['user-dashboard/0']);
+      }
+    });
+  }
+
   //print result
   printPage() {
     window.print();

@@ -41,6 +41,10 @@ mat-icon {
   font-size: 1rem;
   color: aliceblue;
 }
+.dropdown{
+  background: #002b5c;
+  color: white;
+}
 mat-icon {
   margin-right: 8px;
 }

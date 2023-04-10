@@ -48,11 +48,26 @@
             <span>All Quizs</span>
         </button>
 
-        <button mat-button class="menu-button" [routerLink]="'/user-dashboard/'+c.cid" *ngFor="let c of categories ">
-            <mat-icon>quiz</mat-icon>
-            <span>{{c.title}}</span>
-        </button>
+        <div>
+           
+            <button mat-button class="menu-button" [routerLink]="'/user-dashboard/'+c.cid" *ngFor="let c of obs |async ">
+                <mat-icon>quiz</mat-icon>
+                <span>{{c.title}}</span>
+            </button>
+            <mat-paginator class="dropdown" #paginator [length]="length" [pageSize]="pageSize"
+            (page)="pageEvent = $event">
+        </mat-paginator>
+    </div>
         <mat-divider></mat-divider>
+
+        <!-- <mat-form-field class="menu-button dropdown">
+            <mat-label>Select Option</mat-label>
+
+            <mat-select required class="dropdown">
+                <mat-option class="dropdown" style="color: white;" *ngFor="let c of categories"
+                    [value]="c.title"> <mat-icon>quiz</mat-icon> {{c.title}}</mat-option>
+            </mat-select>
+        </mat-form-field> -->
 
         <button mat-button class="menu-button" routerLink="/user-dashboard/feedback/help">
             <mat-icon>help</mat-icon>

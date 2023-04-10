@@ -5,14 +5,25 @@
 <div class="content" style="height: 100%;">
     <!-- <img src="../../../assets/1.png" alt=""> -->
     <div class="row">
-        <div class="show-mobile">
-            <p class="text-muted p-0 m-0">Turn on the desktop site(If possible)</p>
-        </div>
-        <div class=" col-md-6">
+        <div class="col-md-2">
             <div class="container ml-4 m-2">
                 <h1>Exam</h1>
                 <h1>Portal</h1>
             </div>
+        </div>
+        <div class="col-md-9 hide-mobile">
+            <div class="mt-5">
+                <marquee behavior="scroll" [scrollAmount]="15" direction="left"
+                class="h3 noselect" >
+                Welcome to the Exam Portal! This is your one-stop-shop for all your
+                online examination needs. Whether you're a student, teacher, or
+                administrator, we've got everything you need to manage your exams.
+            </marquee>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class=" col-md-6 mt-5">
             <div class="blur logo text-center">
                 <div class='reflection-container1'>
                     <a class='reflection-grid-cell reflection-grid-cell-1'
@@ -219,12 +230,13 @@
                 </div>
             </div>
         </div>
+        
         <div class="col-md-6">
             <!-- <div class="text-quote">
                 "Success is not final; failure is not fatal: It is the courage to continue that counts"
                 <p class="text-end" style="margin-right: 60px;"> - Winston Churchill</p>
             </div> -->
-            <div class="m-5">
+            <div class="">
                 <!-- <img src="../../../assets/quiz1.png" style="width: 100%;" class="quizimg" alt=""> -->
                 <div class='reflection-container'>
                     <a class='reflection-grid-cell reflection-grid-cell-1'
@@ -438,13 +450,15 @@
                     (click)="openSignup()"><span>Sign Up</span></button>
             </div>
         </div>
-        <marquee behavior="scroll" [scrollAmount]="15" direction="left"
+        
+        <div class="show-mobile">
+            <marquee behavior="scroll" [scrollAmount]="15" direction="left"
             class="h3 noselect" >
             Welcome to the Exam Portal! This is your one-stop-shop for all your
             online examination needs. Whether you're a student, teacher, or
             administrator, we've got everything you need to manage your exams.
         </marquee>
-
+        </div>
     </div>
 
 </div>
@@ -750,7 +764,7 @@
                         <p><i class="fas fa-home me-3"></i> Sangamner,
                             Maharashtra, India 422605</p>
 
-                        <p> <i class="fas fa-home me-3"></i><a
+                        <p> <i class="fas fa-home me-3"></i><a class="text-decoration-none" style="color: #6c757d;"
                                 href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=examportal@gmail.com"
                                 target="_blank" rel="noopener noreferrer">examportal@gmail.com</a>.</p>
                         <p><i class="fas fa-phone me-3"></i> + 91 9898989898</p>
@@ -767,7 +781,7 @@
         <div class="text-center p-4" style="background-color: rgba(0, 0, 0,
             0.05);">
             © 2023 Copyright:
-            <a class="text-reset fw-bold" href="https://google.com/">Exam Portal</a>
+            <a class="text-reset fw-bold text-decoration-none" href="https://google.com/">Exam Portal</a>
         </div>
         <!-- Copyright -->
     </footer>

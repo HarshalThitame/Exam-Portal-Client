@@ -76,6 +76,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { RankingComponent } from './pages/ranking/ranking.component';
 import { HelpcenterComponent } from './pages/helpcenter/helpcenter.component';
+import { ProgressBarColor } from './pages/user/quiz-attempts/progress-bar-color';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 
 // import PeopleOutlineIcon from '@mui/icons-material/PeopleOutline';
@@ -121,6 +123,7 @@ import { HelpcenterComponent } from './pages/helpcenter/helpcenter.component';
     ResetPasswordComponent,
     RankingComponent,
     HelpcenterComponent,
+    ProgressBarColor
   ],
   imports: [
     MatButtonToggleModule,
@@ -168,3 +171,4 @@ import { HelpcenterComponent } from './pages/helpcenter/helpcenter.component';
   bootstrap: [AppComponent],
 })
 export class AppModule {}
+platformBrowserDynamic().bootstrapModule(AppModule);
