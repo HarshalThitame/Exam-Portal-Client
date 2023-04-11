@@ -76,20 +76,16 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { RankingComponent } from './pages/ranking/ranking.component';
 import { HelpcenterComponent } from './pages/helpcenter/helpcenter.component';
-<<<<<<< HEAD
-import { ProgressBarColor } from './pages/user/quiz-attempts/progress-bar-color';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { SwiperComponent ,SwiperSlide } from './pages/swiper/swiper.component';
 
-=======
->>>>>>> parent of ae863ac (Bug Fix)
+// import { ProgressBarColor } from './pages/user/quiz-attempts/progress-bar-color';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+
 
 
 // import PeopleOutlineIcon from '@mui/icons-material/PeopleOutline';
 
 @NgModule({
   declarations: [
-    SwiperSlide,
     AppComponent,
     NavbarComponent,
     FooterComponent,
@@ -129,11 +125,6 @@ import { SwiperComponent ,SwiperSlide } from './pages/swiper/swiper.component';
     ResetPasswordComponent,
     RankingComponent,
     HelpcenterComponent,
-<<<<<<< HEAD
-    ProgressBarColor,
-    SwiperComponent
-=======
->>>>>>> parent of ae863ac (Bug Fix)
   ],
   imports: [
     MatButtonToggleModule,
