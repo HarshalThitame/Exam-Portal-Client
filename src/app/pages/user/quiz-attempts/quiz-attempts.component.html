@@ -1,124 +1,58 @@
 <mat-list>
-  <div class="h3" mat-subheader>You have attempted following quiz...</div>
+    <div class="h3" mat-subheader>You have attempted following quiz...</div>
 </mat-list>
 
 <mat-divider></mat-divider>
 
 <div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <mat-paginator
-        #paginator
-        [length]="length"
-        [pageSize]="pageSize"
-        [pageSizeOptions]="[3, 6, 10, 50]"
-        (page)="pageEvent = $event"
-      >
-      </mat-paginator>
-      <mat-card class="example-card m-3" *ngFor="let r of obs | async">
-        <mat-card-header>
-          <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title>{{ r.quizs.title }}</mat-card-title>
-          <mat-card-subtitle
-            >Category : {{ r.quizs.category.title }}</mat-card-subtitle
-          >
-        </mat-card-header>
+    <div class="row">
+        <div class="col-md-12">
+            <mat-paginator #paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="[3,6,10,50]"
+                (page)="pageEvent = $event">
+            </mat-paginator>
+            <mat-card class="example-card m-3" *ngFor="let r of obs | async">
+                <mat-card-header>
+                    <div mat-card-avatar class="example-header-image"></div>
+                    <mat-card-title>{{r.quizs.title}}</mat-card-title>
+                    <mat-card-subtitle>Category : {{r.quizs.category.title}}</mat-card-subtitle>
+                </mat-card-header>
 
-        <mat-card-content>
-          <div class="mobile-view">
-            <p>
-              {{ r.quizs.description }}
-            </p>
-          </div>
-          <mat-divider></mat-divider>
-          <div class="row mobile-view">
-            <div class="col-md-3 mt-4">
-              <h3 class="fw-light">
-                Total Questions : {{ r.quizs.numberOfQuestions }} <br />
-                Total Marks : {{ r.quizs.maxMarks }}
-              </h3>
-            </div>
-            <div class="col-md-3 mt-4">
-              <h3>
-                <mat-progress-spinner
-                  title="{{ (r.attempted / r.quizs.numberOfQuestions) * 100 }}"
-                  [mode]="'determinate'"
-                  value="{{ (r.attempted / r.quizs.numberOfQuestions) * 100 }}"
-                ></mat-progress-spinner>
-                <br />
-                Attempted : {{ r.attempted }}
-              </h3>
-            </div>
-            <div class="col-md-3 mt-4">
-              <h3>
-                <mat-progress-spinner
-                  title="{{ (r.correctAns / r.quizs.numberOfQuestions) * 100 }}"
-                  [mode]="'determinate'"
-                  color="accent"
-                  value="{{ (r.correctAns / r.quizs.numberOfQuestions) * 100 }}"
-                ></mat-progress-spinner>
-                <br />
-                Correct Answer : {{ r.correctAns }}
-              </h3>
-            </div>
-            <div class="col-md-3 mt-4">
-              <h3>
-                <mat-progress-spinner
-                  title="{{ (r.marksGot / r.quizs.maxMarks) * 100 }}"
-                  [mode]="'determinate'"
-                  color="warn"
-                  value="{{ (r.marksGot / r.quizs.maxMarks) * 100 }}"
-                ></mat-progress-spinner
-                ><br />
-                Marks Obtained : {{ r.marksGot }}
-              </h3>
-            </div>
-          </div>
+                <mat-card-content>
+                    <div class="mobile-view">
+                        <p>
+                            {{r.quizs.description}}
+                        </p>
+                    </div>
+                    <mat-divider></mat-divider>
 
-          <div class="show-mobile">
-            <h3 class="fw-light">
-              Total Questions : {{ r.quizs.numberOfQuestions }} <br />
-              Total Marks : {{ r.quizs.maxMarks }}
-            </h3>
+                    <h3 class="fw-light">Total Questions : {{r.quizs.numberOfQuestions}} <br> Total Marks :
+                        {{r.quizs.maxMarks}}</h3>
 
-            <mat-divider></mat-divider>
+                    <mat-divider></mat-divider>
 
-            <h3>
-              Attempted : {{ r.attempted }}
-              <mat-progress-bar
-                title="{{ (r.attempted / r.quizs.numberOfQuestions) * 100 }}"
-                mode="buffer"
-                value="{{ (r.attempted / r.quizs.numberOfQuestions) * 100 }}"
-              ></mat-progress-bar>
-            </h3>
+                    <h3>Attempted : {{r.attempted}}
+                        <mat-progress-bar title="{{r.attempted/r.quizs.numberOfQuestions*100 }}" mode="buffer"
+                            value="{{r.attempted/r.quizs.numberOfQuestions*100}}"></mat-progress-bar>
+                    </h3>
 
-            <h3>
-              Correct Answer : {{ r.correctAns }}
-              <mat-progress-bar
-                title="{{ (r.correctAns / r.quizs.numberOfQuestions) * 100 }}"
-                mode="buffer"
-                color="accent"
-                value="{{ (r.correctAns / r.quizs.numberOfQuestions) * 100 }}"
-              ></mat-progress-bar>
-            </h3>
+                    <h3>Correct Answer : {{r.correctAns}}
+                        <mat-progress-bar title="{{r.correctAns/r.quizs.numberOfQuestions*100 }}" mode="buffer"
+                            color="accent" value="{{r.correctAns/r.quizs.numberOfQuestions*100}}"></mat-progress-bar>
+                    </h3>
 
-            <h3>
-              Marks Obtained : {{ r.marksGot }}
-              <mat-progress-bar
-                title="{{ (r.marksGot / r.quizs.maxMarks) * 100 }}"
-                mode="buffer"
-                color="warn"
-                value="{{ (r.marksGot / r.quizs.maxMarks) * 100 }}"
-              ></mat-progress-bar>
-            </h3>
-          </div>
-        </mat-card-content>
-        <mat-card-actions align="end">
-          <button class="fw-light attemptdate" mat-button>
-            Attempted Date : {{ r.createdDate | date : "medium" }}
-          </button>
-        </mat-card-actions>
-      </mat-card>
+                    <h3>Marks Obtained : {{r.marksGot}}
+                        <mat-progress-bar title="{{r.marksGot/r.quizs.maxMarks*100 }}" mode="buffer" color="warn"
+                            value="{{r.marksGot/r.quizs.maxMarks*100}}"></mat-progress-bar>
+                    </h3>
+
+
+                </mat-card-content>
+                <mat-card-actions align="end">
+                    <button class="fw-light" mat-button>Attempted Date : {{r.createdDate | date : 'medium'}} </button>
+                </mat-card-actions>
+                
+            </mat-card>
+
+        </div>
     </div>
-  </div>
 </div>

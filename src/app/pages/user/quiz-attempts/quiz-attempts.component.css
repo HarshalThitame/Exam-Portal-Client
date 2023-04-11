@@ -9,15 +9,4 @@
   .mobile-view {
     display: none;
   }
-  .attemptdate
-  {
-    font-size: 12px;
-  }
-  
-}
-@media only screen and (min-width: 768px) {
-  .show-mobile {
-    display: none;
-  }
-  
 }

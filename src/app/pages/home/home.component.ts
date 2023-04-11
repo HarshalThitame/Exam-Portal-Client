@@ -55,7 +55,6 @@ export class HomeComponent implements OnInit {
     subject: '',
     message: '',
   };
-  static c: number = 0;
 
   constructor(
     private _login: LoginService,
@@ -93,13 +92,6 @@ export class HomeComponent implements OnInit {
       },
       (error) => {
         console.log(error);
-        if(HomeComponent.c==0)
-        {
-          console.log("Hello Welcome to exam portal");
-          
-          this._router.navigate(['/'])
-          HomeComponent.c++;
-        }
         this._login.logout();
       }
     );
